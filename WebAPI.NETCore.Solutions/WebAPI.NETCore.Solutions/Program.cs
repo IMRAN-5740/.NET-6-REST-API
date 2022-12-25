@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPI.NETCore.Solutions.Data;
+using WebAPI.NETCore.Solutions.Interfaces.Manager;
+using WebAPI.NETCore.Solutions.Manager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
 
+builder.Services.AddTransient<IProductManager, ProductManager>();
 
 
 var app = builder.Build();

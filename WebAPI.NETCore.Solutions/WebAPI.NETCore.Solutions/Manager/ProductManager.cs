@@ -1,5 +1,6 @@
 ﻿using EF.Core.Repository.Interface.Repository;
 using EF.Core.Repository.Manager;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.NETCore.Solutions.Data;
 using WebAPI.NETCore.Solutions.Interfaces.Manager;
 using WebAPI.NETCore.Solutions.Models;
@@ -13,6 +14,12 @@ namespace WebAPI.NETCore.Solutions.Manager
         public ProductManager( ApplicationDbContext _dbContext) : base(new ProductRepository(_dbContext))
         {
            
+        }
+
+        public Product GetById(int id)
+        {
+            var product=GetFirstOrDefault(c => c.Id == id);
+            return product;
         }
     }
 }
