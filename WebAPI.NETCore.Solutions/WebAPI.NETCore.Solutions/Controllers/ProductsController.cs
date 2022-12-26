@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CoreApiResponse;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using System.Net;
 using WebAPI.NETCore.Solutions.Data;
 using WebAPI.NETCore.Solutions.Interfaces.Manager;
 using WebAPI.NETCore.Solutions.Manager;
@@ -10,7 +12,7 @@ namespace WebAPI.NETCore.Solutions.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseController
     {
 
 
@@ -21,72 +23,115 @@ namespace WebAPI.NETCore.Solutions.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Product>> GetAll()
+        public IActionResult GetAll()
         {
-            var products = _productManager.GetAll().ToList();
-            return products;
+            try
+            {
+                var products = _productManager.GetAll().ToList();
+                // return Ok(products);
+                return CustomResult("Product Loaded Successfully",products,HttpStatusCode.Accepted); 
+            }
+            catch(Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
         }
 
 
         [HttpGet("id")]
-        public ActionResult<Product> GetById(int id)
+        public IActionResult GetById(int id)
         {
-            var product = _productManager.GetById(id);
-            if(product==null)
+            try
             {
-                return NotFound();
-            }
+                var product = _productManager.GetById(id);
+                if (product == null)
+                {
+                    return CustomResult("Product Not Found",product,HttpStatusCode.NotFound);
+                }
 
-            return Ok(product);
+                return CustomResult("Product Found Successfully", product, HttpStatusCode.OK);
+            }
+           
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
         }
 
         [HttpPost("product")]
        // [Route("CreateProduct")]
-        public  ActionResult<Product>CreateProduct(Product product)
+        public  IActionResult CreateProduct(Product product)
         {
-            bool isSaved = _productManager.Add(product);
-            if (isSaved)
+            try
             {
-                return Ok("Product Create Has been Successfully");
+                product.DateTime = DateTime.Now;
+                bool isSaved = _productManager.Add(product);
+                if (isSaved)
+                {
+                    return  CustomResult("Product has been Created Successfully", product, HttpStatusCode.OK);
+                }
+                return  CustomResult("Product not Create", product, HttpStatusCode.BadRequest);
             }
-            return BadRequest("Not Create");
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
+
 
         }
 
         [HttpPut("product")]
      //  [Route("product")]
-        public ActionResult<Product> EditProduct(Product product)
+        public IActionResult EditProduct(Product product)
         {
-            
-            if (product == null)
+            try
             {
-                return NotFound();
-            }
+                if (product == null)
+                {
+                    return CustomResult("Product Not Found", product, HttpStatusCode.NotFound);
+                }
+                if (product.Id == 0)
+                {
+                    
+                    return CustomResult("Request Id is Missing", product, HttpStatusCode.BadRequest);
+                }
 
-            bool isUpate = _productManager.Update(product);
-            if (isUpate)
-            {
-                return Ok(product);
+                bool isUpate = _productManager.Update(product);
+                if (isUpate)
+                {
+                    return CustomResult("Product has been Updated Successfully", product, HttpStatusCode.OK);
+                }
+              
+                return CustomResult("Product Not Updated", product, HttpStatusCode.BadRequest);
             }
-            return BadRequest("Product Not Updated");
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message,  HttpStatusCode.BadRequest);
+            }
         }
 
         [HttpDelete("id")]
        // [Route("DeleteProduct")]
-        public ActionResult<string> Delete( int id)
+        public IActionResult Delete( int id)
         {
-
-            var products = _productManager.GetById(id);
-            if (products == null)
+            try
             {
-                return BadRequest("Corresponding Product Not Found"); 
+                    var products = _productManager.GetById(id);
+                    if (products == null)
+                    {
+                        return BadRequest("Corresponding Product Not Found"); 
+                    }
+                    bool isDelete = _productManager.Delete(products);
+                    if (isDelete)
+                    {
+                    return CustomResult("Product has been Deleted Successfully", products, HttpStatusCode.OK);
+                }
+                return CustomResult("Product Not Deleted", products, HttpStatusCode.BadRequest);
             }
-            bool isDelete = _productManager.Delete(products);
-            if (isDelete)
+            catch (Exception ex)
             {
-                return Ok("Product Deleted Successfully");
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
             }
-            return BadRequest("Product Not Deleted");
 
         }
 

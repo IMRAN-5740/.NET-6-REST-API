@@ -81,3 +81,4 @@ E:\.NET 6 REST API\WebAPI.NETCore.Solutions\WebAPI.NETCore.Solutions\bin\Debug\n
 E:\.NET 6 REST API\WebAPI.NETCore.Solutions\WebAPI.NETCore.Solutions\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 E:\.NET 6 REST API\WebAPI.NETCore.Solutions\WebAPI.NETCore.Solutions\bin\Debug\net6.0\System.Text.Json.dll
 E:\.NET 6 REST API\WebAPI.NETCore.Solutions\WebAPI.NETCore.Solutions\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+E:\.NET 6 REST API\WebAPI.NETCore.Solutions\WebAPI.NETCore.Solutions\bin\Debug\net6.0\CoreApiResponse.dll
