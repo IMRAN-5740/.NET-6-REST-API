@@ -8,5 +8,6 @@ namespace WebAPI.NETCore.Solutions.Interfaces.Manager
         public Product GetById(int id);
         public ICollection<Product> SearchFixed(string title);
         public ICollection<Product> SearchContains(string text);
+        public ICollection<Product> PagingProduct(int page,int pageSize);
     }
 }

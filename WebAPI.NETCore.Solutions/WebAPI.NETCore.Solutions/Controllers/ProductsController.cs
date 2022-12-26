@@ -179,6 +179,22 @@ namespace WebAPI.NETCore.Solutions.Controllers
 
         }
 
+        [HttpGet("page")]
+        public IActionResult PagingProduct(int page=1)
+
+        {
+            try
+            {
+                var products = _productManager.PagingProduct(page, 2);
+                return CustomResult("Paging Product List Shown Successfully",products,HttpStatusCode.Accepted);
+            }
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
+
+        }
+
 
     }
 }

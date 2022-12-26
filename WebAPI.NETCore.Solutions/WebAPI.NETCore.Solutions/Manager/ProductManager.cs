@@ -34,5 +34,16 @@ namespace WebAPI.NETCore.Solutions.Manager
             var products = Get(c=>c.Name.ToLower().Contains(text) || c.Description.ToLower().Contains(text));
             return products;
         }
+
+        public ICollection<Product> PagingProduct(int page,int pageSize)
+        {
+           if(page <= 1)
+            {
+                page = 0;
+            }
+            int totalPage = page * pageSize;
+            var products=GetAll().Skip(totalPage).Take(pageSize).ToList();
+            return products;
+        }
     }
 }
