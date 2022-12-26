@@ -186,7 +186,11 @@ namespace WebAPI.NETCore.Solutions.Controllers
             try
             {
                 var products = _productManager.PagingProduct(page, 2);
-                return CustomResult("Paging Product List Shown Successfully",products,HttpStatusCode.Accepted);
+                if(products.Count<1 )
+                {
+                    return CustomResult("Product Not Found in this Page", HttpStatusCode.BadRequest);
+                }
+                return CustomResult("Paging Product List Shown Successfully Page :"+page,products.ToList(),HttpStatusCode.Accepted);
             }
             catch (Exception ex)
             {
