@@ -27,7 +27,7 @@ namespace WebAPI.NETCore.Solutions.Controllers
         {
             try
             {
-                var products = _productManager.GetAll().ToList();
+                var products = _productManager.GetAll().OrderBy(c=>c.Id).ToList();
                 // return Ok(products);
                 return CustomResult("Product Loaded Successfully",products,HttpStatusCode.Accepted); 
             }
@@ -38,6 +38,50 @@ namespace WebAPI.NETCore.Solutions.Controllers
         }
 
 
+        [HttpGet("title")]
+        public IActionResult SearchFixed(string title)
+        {
+            try
+            {
+                var products = _productManager.SearchFixed(title).ToList();
+                // return Ok(products);
+                return CustomResult("Searching Product", products, HttpStatusCode.Accepted);
+            }
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
+        }
+
+        [HttpGet("text")]
+        public IActionResult SearchContains(string text)
+        {
+            try
+            {
+                var products = _productManager.SearchContains(text).ToList();
+                // return Ok(products);
+                return CustomResult("Searching Product", products, HttpStatusCode.Accepted);
+            }
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
+        }
+
+        [HttpGet("Descending")]
+        public IActionResult GetAllDescending()
+        {
+            try
+            {
+                var products = _productManager.GetAll().OrderByDescending(c=>c.DateTime).ToList();
+                // return Ok(products);
+                return CustomResult("Product Loaded Successfully", products, HttpStatusCode.Accepted);
+            }
+            catch (Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
+        }
         [HttpGet("id")]
         public IActionResult GetById(int id)
         {
@@ -119,8 +163,8 @@ namespace WebAPI.NETCore.Solutions.Controllers
                     var products = _productManager.GetById(id);
                     if (products == null)
                     {
-                        return BadRequest("Corresponding Product Not Found"); 
-                    }
+                    return CustomResult("Product Not Found", HttpStatusCode.BadRequest);
+                }
                     bool isDelete = _productManager.Delete(products);
                     if (isDelete)
                     {

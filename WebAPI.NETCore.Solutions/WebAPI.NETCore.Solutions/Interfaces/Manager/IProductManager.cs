@@ -6,5 +6,7 @@ namespace WebAPI.NETCore.Solutions.Interfaces.Manager
     public interface IProductManager:ICommonManager<Product>
     {
         public Product GetById(int id);
+        public ICollection<Product> SearchFixed(string title);
+        public ICollection<Product> SearchContains(string text);
     }
 }

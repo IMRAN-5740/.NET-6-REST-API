@@ -16,10 +16,23 @@ namespace WebAPI.NETCore.Solutions.Manager
            
         }
 
+        public ICollection<Product> SearchFixed(string title)
+        {
+            var products = Get(c => c.Name.ToLower() == title.ToLower());
+            return products;
+        }
+
         public Product GetById(int id)
         {
             var product=GetFirstOrDefault(c => c.Id == id);
             return product;
+        }
+
+        public ICollection<Product> SearchContains(string text)
+        {
+            text = text.ToLower();
+            var products = Get(c=>c.Name.ToLower().Contains(text) || c.Description.ToLower().Contains(text));
+            return products;
         }
     }
 }
