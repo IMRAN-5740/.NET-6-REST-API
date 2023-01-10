@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +11,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //builder.Services.AddApiVersioning();
 builder.Services.AddApiVersioning(options => {
+
+    //Default Api Versioning Configuring
     options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    //options.ApiVersionReader = ApiVersionReader.Combine(
+    //    new HeaderApiVersionReader("x-version"),
+    //    new MediaTypeApiVersionReader("version"));
     options.ReportApiVersions = true;
-    options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1,0);
 });
 
 var app = builder.Build();

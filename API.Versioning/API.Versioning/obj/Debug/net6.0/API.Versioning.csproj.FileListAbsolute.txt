@@ -26,9 +26,3 @@ E:\.NET 6 REST API\API.Versioning\API.Versioning\obj\Debug\net6.0\API.Versioning
 E:\.NET 6 REST API\API.Versioning\API.Versioning\obj\Debug\net6.0\API.Versioning.genruntimeconfig.cache
 E:\.NET 6 REST API\API.Versioning\API.Versioning\obj\Debug\net6.0\ref\API.Versioning.dll
 E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
-E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\System.Net.Http.Formatting.dll
-E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\System.Web.Http.dll
-E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\Microsoft.AspNet.WebApi.Versioning.dll
-E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\Microsoft.AspNet.WebApi.Versioning.ApiExplorer.dll
-E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
-E:\.NET 6 REST API\API.Versioning\API.Versioning\bin\Debug\net6.0\Newtonsoft.Json.dll
