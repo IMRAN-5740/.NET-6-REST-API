@@ -25,3 +25,14 @@ E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\obj\Debug\net6.0\refi
 E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\obj\Debug\net6.0\MinimulAPI.Examples.pdb
 E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\obj\Debug\net6.0\MinimulAPI.Examples.genruntimeconfig.cache
 E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\obj\Debug\net6.0\ref\MinimulAPI.Examples.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+E:\.NET 6 REST API\MinimulAPI.Examples\MinimulAPI.Examples\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
